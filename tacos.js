@@ -11,45 +11,121 @@ const tacos = [taco, taco1, taco2]
 
 
 // write a function that takes an tacoOBJ and a id
-
 // and returns a new object with name changed to "changed"
+const changeName = (taco) => {
+  newObj = {...taco, name: "changed"}
+  return newObj
+}
+
+console.log(changeName(taco1))
+
+
+
+
+//this function loops through the array and give me back a new array with the changed name on the correct object
+
+              // const changeNameArr = (id) => {
+              //   tacoToBeChanged = tacos.map((t) => t.id === id ? {...t, name: 'changed'} : t)
+              //   return tacoToBeChanged
+              // }
+
+
+//----- this is the same function as above but with the shorthand for practice-------
+
+const changeNameArr = (id) => tacos.map((t) => t.id === id ? {...t, name: 'changed'} : t)
+
+console.log(changeNameArr(2))
+
+// Just double checking that the original array was not altered 
+console.log(tacos)
+
+
 
 
 
 // write a function that takes an tacoOBJ and return some
-
 // formatted html (will be a string technically)
 
+            // const tacoInfo = ({name, price}) => {
+            //   return `This great taco is called ${name} and costs: $${price}`
+            // }
+
+const tacoInfo = ({name, price}) => `This great taco is called ${name} and costs: $${price}`
+
+console.log(tacoInfo(taco1))
 
 
-// write a function that takes an tacoOBJ and return formatted price with
 
-// .00 
+// write a function that takes an tacoOBJ and return formatted price with .00
 
+//Found the toFixed() method to add a deximal and two demcimal places on an number in JS
+const tacoPrice = ({price}) => `The price of this taco is $${price.toFixed(2)}  wow thats expensive !!`
+
+console.log(tacoPrice(taco2))
 
 
 // create a new array where all of the prices is formatted with .00
 
+  let newArr = tacos.map((t) => {
+    let new_price = t.price.toFixed(2)
+    return {id: t.id, name: t.name, price: new_price, about: t.about}
+  })
+
+console.log(newArr)
+
+// Testing here to make sure the original array was unchanged 
+// console.log('test here ----------')
+// console.log(tacos)
+
+
 
 
 // write a function that takes an array and logs each item in the array
-
 // hint forEach
+
+const printTaco = (arr) => arr.forEach((taco) => console.log(taco))
+
+// const printTaco = (arr) => {
+//   arr.forEach((taco) => {
+//     console.log(taco)
+//   })
+// }
+
+printTaco(tacos)
 
 
 
 // use the find method to return the object with id:1
 
+const findTaco = (id) => tacos.find((taco) => taco.id === id)
+
+// const findTaco = (id) => {
+//   foundTaco = tacos.find((taco) => taco.id === id)
+//   return foundTaco
+// }
+
+console.log(findTaco(2))
+
 
 
 // return a new array with all prices greater than 19
 
+const highPricedTacos = () => tacos.filter((taco) => taco.price > 19 )
+
+console.log(highPricedTacos())
+
 
 
 // return a new array with a 'about' key where it is a combo of
-
 // name price and about
 
+const aboutArr = tacos.map((taco) => {
+  let new_about = `The ${taco.name} taco cost $${taco.price} and is ${taco.about}`
+  
+  return {id: taco.id, name: taco.name, price: taco.price, about: new_about}
+})
+
+console.log(aboutArr)
 
 
 
