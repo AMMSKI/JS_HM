@@ -9,6 +9,7 @@ const taco2 = {id:3, name:'fish', price:30, about:'So good'}
 const tacos = [taco, taco1, taco2]
 
 
+//-----------------------------------------------------------------------------------------------------------------------
 
 // write a function that takes an tacoOBJ and a id
 // and returns a new object with name changed to "changed"
@@ -19,8 +20,7 @@ const changeName = (taco) => {
 
 console.log(changeName(taco1))
 
-
-
+//-----------------------------------------------------------------------------------------------------------------------
 
 //this function loops through the array and give me back a new array with the changed name on the correct object
 
@@ -39,9 +39,7 @@ console.log(changeNameArr(2))
 // Just double checking that the original array was not altered 
 console.log(tacos)
 
-
-
-
+//-----------------------------------------------------------------------------------------------------------------------
 
 // write a function that takes an tacoOBJ and return some
 // formatted html (will be a string technically)
@@ -54,7 +52,7 @@ const tacoInfo = ({name, price}) => `This great taco is called ${name} and costs
 
 console.log(tacoInfo(taco1))
 
-
+//-----------------------------------------------------------------------------------------------------------------------
 
 // write a function that takes an tacoOBJ and return formatted price with .00
 
@@ -63,6 +61,7 @@ const tacoPrice = ({price}) => `The price of this taco is $${price.toFixed(2)}  
 
 console.log(tacoPrice(taco2))
 
+//-----------------------------------------------------------------------------------------------------------------------
 
 // create a new array where all of the prices is formatted with .00
 
@@ -77,36 +76,33 @@ console.log(newArr)
 // console.log('test here ----------')
 // console.log(tacos)
 
-
-
+//-----------------------------------------------------------------------------------------------------------------------
 
 // write a function that takes an array and logs each item in the array
 // hint forEach
+          // const printTaco = (arr) => {
+          //   arr.forEach((taco) => {
+          //     console.log(taco)
+          //   })
+          // }
 
 const printTaco = (arr) => arr.forEach((taco) => console.log(taco))
 
-// const printTaco = (arr) => {
-//   arr.forEach((taco) => {
-//     console.log(taco)
-//   })
-// }
-
 printTaco(tacos)
 
-
+//-----------------------------------------------------------------------------------------------------------------------
 
 // use the find method to return the object with id:1
+          // const findTaco = (id) => {
+          //   foundTaco = tacos.find((taco) => taco.id === id)
+          //   return foundTaco
+          // }
 
 const findTaco = (id) => tacos.find((taco) => taco.id === id)
 
-// const findTaco = (id) => {
-//   foundTaco = tacos.find((taco) => taco.id === id)
-//   return foundTaco
-// }
-
 console.log(findTaco(2))
 
-
+//-----------------------------------------------------------------------------------------------------------------------
 
 // return a new array with all prices greater than 19
 
@@ -114,18 +110,20 @@ const highPricedTacos = () => tacos.filter((taco) => taco.price > 19 )
 
 console.log(highPricedTacos())
 
-
+//-----------------------------------------------------------------------------------------------------------------------
 
 // return a new array with a 'about' key where it is a combo of
 // name price and about
 
 const aboutArr = tacos.map((taco) => {
-  let new_about = `The ${taco.name} taco cost $${taco.price} and is ${taco.about}`
-  
+  let new_about = `The ${taco.name} taco costs $${taco.price} and is ${taco.about}`
+
   return {id: taco.id, name: taco.name, price: taco.price, about: new_about}
 })
 
 console.log(aboutArr)
+
+//-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -136,14 +134,57 @@ console.log(aboutArr)
 // can hard code data (Don't need to get it from the users)
 
 
+//-----------------------------------------------------------------------------------------------------------------------
 
 // READ (array of obj to array of html) 
 
+const returnhtml = (arr) => {
+  return arr.map((t) => [`<h1>${t.name}</h1>`, `<h2>${t.price}</h2>`, `<h2>${t.about}</h2>`])
+}
+
+console.log(returnhtml(tacos))
+
+//-----------------------------------------------------------------------------------------------------------------------
+
 // Update (update a taco) 
+
+const newTacoName = (taco) => {
+  let newName = 'navajo'
+
+  return {id: taco.id, name: newName, price: taco.price, about: taco.about}
+}
+
+const newTaco1 = newTacoName(taco1)
+
+console.log(newTaco1)
+
+//-----------------------------------------------------------------------------------------------------------------------
 
 // Remove (delete a taco) 
 
+const removeTaco = (id) => tacos.filter((t) => t.id !== id)
+
+        // const removeTaco = (id) => {
+        //   const removedTacosArr = tacos.filter((t)=> t.id !== id)
+        //   return removedTacosArr
+        // }
+
+console.log(removeTaco(2))
+
+
+//-----------------------------------------------------------------------------------------------------------------------
+
 // Create (add a taco) 
+const taco4 = {id:5, name:'patato', price:4, about:'yum yum'}
+
+const createTaco = (taco) => {
+  let moreTacos = tacos
+  moreTacos.push(taco)
+  return moreTacos
+}
+
+console.log(createTaco(taco4))
+console.log(tacos)
 
 
 
